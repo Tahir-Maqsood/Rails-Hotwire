@@ -1,0 +1,34 @@
+<% cache('patients_index', expires_in: 1.minutes) do %>
+  <h1>Patients</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% if @patients.empty? %>
+        <tr>
+          <td colspan="4">No patients exist.</td>
+        </tr>
+      <% else %>
+        <%= render partial: 'patients/patient', collection: @patients %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Patient', new_patient_path %>
+
+  <%= paginate @patients %>
+<% end %>
+
+<%# Reading a cache %>
+<%# Rails.cache.read('patients_index') %>
