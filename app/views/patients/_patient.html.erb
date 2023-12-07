@@ -1,6 +1,7 @@
 <!-- app/views/patients/_patient.html.erb -->
 <tr>
-  <td data-controller="patient-name"><%= patient.name %></td>
+  <%# Connecting HTML with JS and adding a target and action using Stimulus %>
+  <td data-controller="patient-name" data-patient-name-target="name" data-action="click->patient-name#getName"><%= patient.name %></td>
   <td><%= patient.age %></td>
   <td><%= patient.email %></td>
   <td><%= patient.address %></td>
